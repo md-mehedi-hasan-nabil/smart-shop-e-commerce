@@ -1,0 +1,12 @@
+.link-color{
+    color: white !important;
+}
+.d-color{
+    color: #F28123 !important;
+}
+.link-color:hover{
+    color: #F28123 !important;
+}
+.nav-item{
+    padding: 0 0.7rem !important;
+}

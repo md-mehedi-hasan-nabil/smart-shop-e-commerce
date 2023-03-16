@@ -1,0 +1,9 @@
+.banner{
+    background-image: url('../../images/1.jpg');
+    height: 60vh;
+    background-position: center;
+    background-size: cover;
+}
+.d-text{
+    color: #F28123;
+}

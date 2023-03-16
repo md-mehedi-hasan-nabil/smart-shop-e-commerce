@@ -1,0 +1,22 @@
+.background {
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.background-img1,
+.background-img2,
+.background-img3 {
+  background-image: url("../../images/hero-bg.jpg"),
+    linear-gradient(rgba(54, 52, 52, 0.5), rgba(66, 63, 63, 0.7));
+    background-blend-mode: multiply;
+}
+.d-btn{
+  background: #F28123;
+}
+.d-btn:hover{
+  border: 1px solid #F28123 !important;
+  color: #F28123 !important;
+}
+.d-outline-btn{
+  border: 1px solid #F28123 !important;
+}
