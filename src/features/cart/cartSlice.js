@@ -28,7 +28,7 @@ const cartSlice = createSlice({
                 if (product._id === action.payload) {
                     return {
                         ...product,
-                        quantity: product.quantity - 1 > -1 ? product.quantity - 1 : 0
+                        quantity: product.quantity - 1 > 0 ? product.quantity - 1 : 1
                     }
                 } else {
                     return product

@@ -9,7 +9,7 @@ export const authApi = apiSlice.injectEndpoints({
         }),
         getUserByEmail: builder.query({
             query: (email) => ({
-                url: `/api/user/${email}`
+                url: `/api/user/email/${email}`
             })
         }),
         register: builder.mutation({

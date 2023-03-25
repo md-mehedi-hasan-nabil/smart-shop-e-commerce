@@ -27,7 +27,7 @@ export default function MakeAdmin() {
                 <form onSubmit={handleSubmit} className='p-5'>
                     <div className="mb-3">
                         <label className="form-label">Email address</label>
-                        <input onChange={e => setEmail(e.target.value)} type="email" className="form-control" placeholder='Email' />
+                        <input onChange={e => setEmail(e.target.value)} value={email} type="email" className="form-control" placeholder='Email' />
                     </div>
                     <button type="submit" className="btn btn-sm btn-primary">Submit</button>
                 </form>

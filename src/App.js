@@ -3,7 +3,6 @@ import './App.css';
 import AllNews from './pages/AllNews/AllNews';
 import Login from './pages/Login/Login';
 import NotFound from './pages/NotFound/NotFound';
-import Register from './pages/Register/Register';
 import About from './pages/About/About';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
@@ -21,14 +20,12 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/news' element={<AllNews />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<AdminPrivateRoute><Dashboard /></AdminPrivateRoute>} />
         <Route path='/product-details/:productId' element={<AdminPrivateRoute><ProductDetails /></AdminPrivateRoute>} />
         <Route path='/all-products' element={<AllProducts />} />

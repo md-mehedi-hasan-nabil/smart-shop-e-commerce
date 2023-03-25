@@ -5,7 +5,7 @@ import { useGetUsersQuery } from '../../features/auth/authApi'
 
 export default function AdminOrderList() {
   const { isLoading: isOrdersLoading, isSuccess: isOrdersSuccess, data: orders } = useGetUsersQuery()
-  // console.log(orders)
+  // console.log(orders) 
   return (
     <DashboardLayout>
       <div className='container py-3'>

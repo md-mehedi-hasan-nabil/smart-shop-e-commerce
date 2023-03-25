@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../images/logo.svg"
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +7,14 @@ import { getAuth, signOut } from "firebase/auth";
 import { userLoggedOut } from "../../features/auth/authSlice";
 
 const Navbar = () => {
+  const location = useLocation()
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
   const { cart } = useSelector(state => state.cart)
   const auth = getAuth();
 
   const { photoURL } = user || {}
+  console.log(location.pathname) // /all-products
 
   function Logout() {
     signOut(auth).then(() => {
@@ -92,17 +94,10 @@ const Navbar = () => {
                       Login
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link link-color" to="/register">
-                      Register
-                    </Link>
-                  </li>
                 </>}
 
-
-
             </ul>
-            <form className="d-flex" role="search">
+            {location.pathname === "/all-products" && <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
                 type="search"
@@ -112,7 +107,7 @@ const Navbar = () => {
               <button className="btn d-outline-btn text-white" type="submit">
                 Search
               </button>
-            </form>
+            </form>}
           </div>
         </div>
       </nav>
