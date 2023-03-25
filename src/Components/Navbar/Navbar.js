@@ -14,7 +14,6 @@ const Navbar = () => {
   const auth = getAuth();
 
   const { photoURL } = user || {}
-  console.log(location.pathname) // /all-products
 
   function Logout() {
     signOut(auth).then(() => {

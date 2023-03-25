@@ -20,7 +20,20 @@ export const productsApi = apiSlice.injectEndpoints({
                 body: data,
             })
         }),
+        updateOrderStatus: builder.mutation({
+            query: (data) => ({
+                url: `/api/order/${data.orderId}`,
+                method: 'PATCH',
+                body: data,
+            })
+        }),
+        deleteOrder: builder.mutation({
+            query: (data) => ({
+                url: `/api/order/${data.orderId}`,
+                method: 'DELETE ',
+            })
+        }),
     }),
 });
 
-export const { useGetOrderProductsQuery, useGetOrderProductByIdQuery, useOrderAddProductsMutation } = productsApi;
+export const { useGetOrderProductsQuery, useGetOrderProductByIdQuery, useOrderAddProductsMutation, useUpdateOrderStatusMutation, useDeleteOrderMutation } = productsApi;

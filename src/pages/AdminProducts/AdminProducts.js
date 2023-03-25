@@ -94,45 +94,6 @@ export default function AdminProducts() {
                 </button>
             </div>
 
-            {/* <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <form onSubmit={handleAddProduct}>
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="mb-3">
-                                    <label className="form-label">Product Name</label>
-                                    <input type="text" className="form-control" onChange={e => handleChange(e)} name="productName" placeholder="" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Product Description</label>
-                                    <input type="text" className="form-control" onChange={e => handleChange(e)} name="productDesc" placeholder="" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Product Image</label>
-                                    <input type="url" className="form-control" onChange={e => handleChange(e)} name="productImage" placeholder="" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Price</label>
-                                    <input type="number" min="0" className="form-control" onChange={e => handleChange(e)} name="price" placeholder="" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Country</label>
-                                    <input type="text" className="form-control" onChange={e => handleChange(e)} name="country" placeholder="" required />
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary">Add Product</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div> */}
-
             <ProductModal actionTitle="Add Product" modalId="staticBackdrop" stateChange={handleChange} onSubmit={handleAddProduct} state={products} />
 
         </DashboardLayout>

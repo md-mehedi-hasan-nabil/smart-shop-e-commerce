@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DashboardLayout from '../../Components/AdminDashboardLayout/AdminDashboardLayout'
-// import { useGetOrderProductsQuery } from '../../features/order/orderApi'
 import { useGetUsersQuery } from '../../features/auth/authApi'
+import { useUpdateOrderStatusMutation } from '../../features/order/orderApi'
+import swal from 'sweetalert'
 
 export default function AdminOrderList() {
-  const { isLoading: isOrdersLoading, isSuccess: isOrdersSuccess, data: orders } = useGetUsersQuery()
-  // console.log(orders) 
+  const { isSuccess: isOrdersSuccess, data: orders } = useGetUsersQuery()
+  const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation()
+
+  useEffect(() => {
+    if (isSuccess) {
+      swal({
+        title: "Good job!",
+        text: "Status Changed successful.",
+        icon: "success",
+      });
+    }
+  })
+
+  orders?.length > 0 && console.log(orders[0]?.order)
+
+  function handleStatusChange(status, orderId) {
+    updateOrderStatus({
+      orderId,
+      status
+    })
+  }
+
   return (
     <DashboardLayout>
       <div className='container py-3'>
@@ -39,7 +60,12 @@ export default function AdminOrderList() {
                         </button>
                       </h2>
                       <div id={index + 1} class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        
                         <div class="accordion-body">
+                          <select onChange={e => handleStatusChange(e.target.value, item._id)} style={{ width: "auto" }} class="form-select mb-3" aria-label="Default select example">
+                            <option value="pending">Pending</option>
+                            <option value="done">Done</option>
+                          </select>
                           <div className='d-flex gap-3'>
                             {
                               item?.products?.length > 0 && item?.products?.map(pd => <div key={pd?._id} class="card position-relative">

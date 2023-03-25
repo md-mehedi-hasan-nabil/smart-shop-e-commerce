@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import moment from 'moment/moment';
 
 const ProductCard = ({ product }) => {
+    const location = useLocation()
     const dispatch = useDispatch()
     const { _id, price, productDesc, productImage, productName } = product || {};
     const { cart } = useSelector(state => state.cart)
@@ -16,7 +18,6 @@ const ProductCard = ({ product }) => {
         }
     }, [_id, cart])
 
-    // cartProduct.filter(pd => pd._id)
 
     function addProductToCart() {
         const obj = {
@@ -49,6 +50,21 @@ const ProductCard = ({ product }) => {
                     <button disabled={disabledBtn} onClick={addProductToCart} className="btn d-btn text-white w-100"><i className="fas fa-shopping-cart me-2"></i>Add To Cart</button>
                 </div>
             </div>
+            {
+                location.pathname === "/all-products" && product?.review?.length > 0 && product.review.map(pd => <div key={pd.user._id} className='border rounded mt-1'>
+                    <div className='d-flex align-items-center gap-1'>
+                        <img style={{ width: '3rem', height: '3rem' }} src={pd.user.photoURL} alt="profile" />
+                        <div className='pt-2'>
+                            <h6 style={{ marginBottom: '-1px' }}>{pd.user.displayName}</h6>
+                            {pd?.date && <p>{moment(pd?.date).fromNow()}</p>}
+
+
+                        </div>
+                    </div>
+                    <p className='lead ps-3'>{pd.message}</p>
+                </div>)
+            }
+
         </div>
     );
 };

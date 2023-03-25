@@ -3,15 +3,13 @@ import React from 'react'
 export default function ProductModal({ refetch, onSubmit, stateChange, modalId, state, actionTitle }) {
     const { productName, productDesc, productImage, country, price } = state || {}
 
-  
-
     return (
         <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <form onSubmit={onSubmit}>
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Product Information</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">

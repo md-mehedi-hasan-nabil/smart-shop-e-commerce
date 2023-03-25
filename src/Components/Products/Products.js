@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Loader from '../Loader/Loader';
 import ProduuctCard from '../ProductCard/ProductCard';
 import { useGetProductsQuery } from '../../features/products/productApi';
@@ -6,7 +6,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Products = () => {
     const location = useLocation()
-    const { isLoading, isSuccess, data: products } = useGetProductsQuery()
+    const { isLoading, isSuccess, data: products, refetch } = useGetProductsQuery()
+
+    useEffect(() => {
+        refetch()
+    }, [refetch])
 
     return (
         <div className='container py-5'>
@@ -18,7 +22,7 @@ const Products = () => {
                 isLoading ? <Loader /> : (
                     <div className="row g-4 pt-5">
                         {
-                            products?.map(product => <ProduuctCard key={product.id} product={product} />)
+                            isSuccess && products?.length > 0 ? products?.map(product => <ProduuctCard key={product.id} product={product} />) : <h2>No Product</h2>
                         }
                     </div>
                 )
