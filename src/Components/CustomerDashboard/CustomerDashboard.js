@@ -9,7 +9,7 @@ import swal from 'sweetalert'
 export default function CustomerDashboard() {
     const { user } = useSelector(state => state.auth) || {}
     const [fetchUser, setFetchUser] = useState(true)
-    const { data: userInfo } = useGetUserByEmailQuery(user?.email, {
+    const { data: userInfo, refetch } = useGetUserByEmailQuery(user?.email, {
         skip: fetchUser
     })
     const [deleteOrder, { isSuccess }] = useDeleteOrderMutation()
@@ -27,13 +27,14 @@ export default function CustomerDashboard() {
                 text: "Order delete successful",
                 icon: "success",
             });
+            refetch()
         }
-    }, [isSuccess])
+    }, [isSuccess, refetch])
 
     const { order: orders } = userInfo || {};
 
 
-    function confirmDelete(orderId, callback) {
+    function confirmDelete(orderId) {
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this record",
@@ -43,18 +44,14 @@ export default function CustomerDashboard() {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    callback(orderId);
+                    if (orderId) {
+                        deleteOrder(orderId)
+                    }
                 }
             })
             .catch((error) => {
                 swal(error.message);
             });
-    }
-
-    function handleDeleteOrder(orderId) {
-        if (orderId) {
-            deleteOrder({orderId})
-        }
     }
 
     return (
@@ -84,7 +81,7 @@ export default function CustomerDashboard() {
                                         </h2>
 
                                         <div id={index + 1} class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <button className='btn btn-danger btn-sm ms-4  mt-3' onClick={() => handleDeleteOrder(order._id)}>Cancel order</button>
+                                            <button className='btn btn-danger btn-sm ms-4  mt-3' onClick={() => confirmDelete(order._id)}>Cancel order</button>
                                             <div class="accordion-body">
 
                                                 <div className='d-flex gap-3'>
