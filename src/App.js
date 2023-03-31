@@ -37,7 +37,6 @@ function App() {
         <Route path='/order/:userId' element={<AdminPrivateRoute><CustomerOrder /></AdminPrivateRoute>} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-
     </BrowserRouter>
   );
 }

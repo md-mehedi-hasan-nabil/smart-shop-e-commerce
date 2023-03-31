@@ -63,11 +63,6 @@ const Navbar = () => {
                   Contact
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className={({ isActive, isPending }) => isActive ? "nav-link link-color d-color" : "nav-link link-color"} to="/dashboard">
-                  Dashboard
-                </NavLink>
-              </li>
               {user ? <>
                 <li className="nav-item dropdown">
                   <img src={photoURL} style={{ cursor: "pointer", width: '3rem' }} className="nav-link rounded-circle dropdown-toggle" data-bs-toggle="dropdown" alt="profile" />

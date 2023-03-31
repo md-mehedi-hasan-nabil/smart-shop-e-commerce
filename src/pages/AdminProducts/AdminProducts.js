@@ -39,7 +39,6 @@ export default function AdminProducts() {
         fetch(`${process.env.REACT_APP_API_URL}/api/product/`, {
             headers: {
                 "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             method: "POST",
             body: JSON.stringify(products)

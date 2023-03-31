@@ -49,18 +49,18 @@ export default function CustomerDashboardLayout({ children }) {
     <main className='position-relative container-fluid vh-100'>
       {/* <Sidebar /> */}
       <>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container">
-            <Link class="navbar-brand" to="/">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container">
+            <Link className="navbar-brand" to="/">
               <img src={logo} alt="logo" />
             </Link>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+              <form className="d-flex" role="search">
+                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-success" type="submit">Search</button>
               </form>
             </div>
           </div>

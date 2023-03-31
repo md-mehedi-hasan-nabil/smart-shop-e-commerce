@@ -39,8 +39,8 @@ export default function AddReview({ productId }) {
 
     return (
         <form onSubmit={handleReview}>
-            <div class="mb-3 d-flex px-4">
-                <input type="text" class="form-control" id="review" name="review" value={review} onChange={e => setReview(e.target.value)} placeholder="Add review" />
+            <div className="mb-3 d-flex px-4">
+                <input type="text" className="form-control" id="review" name="review" value={review} onChange={e => setReview(e.target.value)} placeholder="Add review" />
                 <button className='btn btn-danger' type="submit">Review</button>
             </div>
         </form>
