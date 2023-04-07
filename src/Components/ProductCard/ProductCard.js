@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
 import { Link, useLocation } from 'react-router-dom';
 import moment from 'moment/moment';
+import { filterByCategory } from '../../features/products/productSlice';
 
 const ProductCard = ({ product }) => {
     const location = useLocation()
@@ -35,7 +36,19 @@ const ProductCard = ({ product }) => {
                         <h5 className="card-title fw-bold">{productName}
                         </h5>
                     </Link>
-                    {category && <p>{category}</p>}
+                    {category && <p>{category
+                        ?.replace(/#/g, "")
+                        ?.trim()
+                        ?.split(" ")
+                        ?.map((word, index) => (
+                            <span
+                                key={index}
+                                onClick={() => dispatch(filterByCategory(word))}
+                                style={{ marginRight: "0.5rem", cursor: "pointer" }}
+                            >
+                                #{word}
+                            </span>
+                        ))}</p>}
                     <p className="card-text fw-light py-2">{productDesc.slice(0, 100)}...</p>
                     <div className='pb-3 d-flex justify-content-between'>
                         <p className="card-text fw-bold">Price {price}$</p>
