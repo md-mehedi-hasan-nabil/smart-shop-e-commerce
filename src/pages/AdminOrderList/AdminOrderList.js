@@ -69,7 +69,6 @@ export default function AdminOrderList() {
                             <option value="done">Done</option>
                           </select>
                           <div className='d-flex gap-3'>
-
                             {
                               item?.products?.length > 0 && item?.products?.map(pd => <div key={pd?._id} className="card position-relative">
                                 <img src={pd.productImage} className="card-img-top w-50" alt="productImage" />

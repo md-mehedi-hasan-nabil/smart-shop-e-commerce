@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ProductModal({ refetch, onSubmit, stateChange, modalId, state, actionTitle }) {
-    const { productName, productDesc, productImage, country, price } = state || {}
+    const { productName, productDesc, productImage, country, price, category } = state || {}
 
     return (
         <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -34,6 +34,10 @@ export default function ProductModal({ refetch, onSubmit, stateChange, modalId, 
                             <div className="mb-3">
                                 <label className="form-label">Country</label>
                                 <input type="text" className="form-control" onChange={e => stateChange(e)} name="country" value={country} placeholder="" required />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Category</label>
+                                <input type="text" placeholder="#keyword1 #keyword2" className="form-control" onChange={e => stateChange(e)} name="category" value={category} required />
                             </div>
                         </div>
                         <div className="modal-footer">

@@ -4,7 +4,6 @@ import swal from 'sweetalert'
 import AdminProductActionBar from '../../Components/AdminProductActionBar/AdminProductActionBar'
 import ProductModal from '../../Components/ProductModal/ProductModal'
 
-
 export default function AdminProducts() {
     const [allProducts, setAllProducts] = useState([])
     const [refetch, setRefetch] = useState(true)
@@ -16,15 +15,13 @@ export default function AdminProducts() {
     useEffect(() => {
         refetch && fetchAllProducts()
         setRefetch(false)
-        console.log("refetch")
     }, [refetch])
 
     function fetchAllProducts() {
         fetch(`${process.env.REACT_APP_API_URL}/api/product`)
             .then(res => res.json()
-                .then(data => {
-                    setAllProducts(data)
-                }))
+            .then(data => setAllProducts(data)))
+            .catch(error => console.log(error))
     }
 
     function handleChange(e) {
@@ -33,6 +30,7 @@ export default function AdminProducts() {
             [e.target.name]: e.target.value
         })
     }
+
 
     function handleAddProduct(e) {
         e.preventDefault();
