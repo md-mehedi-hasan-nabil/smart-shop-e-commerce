@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/smart-shop-e-commerce-node-server
+
 firebaseConfig.js
 
 /server/node_modules
